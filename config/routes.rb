@@ -1,4 +1,7 @@
 Maserco::Application.routes.draw do
+  resources :proposes
+
+
   resources :items
 
 

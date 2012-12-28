@@ -2,7 +2,7 @@ class CreateItems < ActiveRecord::Migration
   def change
     create_table :items do |t|
       t.string :description
-      t.int :code
+      t.integer :code
 
       t.timestamps
     end
