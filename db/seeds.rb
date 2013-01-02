@@ -6,6 +6,12 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+Item.delete_all
+Propose.delete_all
+ItemsPropose.delete_all
+
 item1 = Item.create(:code => 108, :description => "HORMIGON H-25")
+item2 = Item.create(:code => 80, :description => "DESPEJE Y LIMPIEZA DE FAJA")
 p1 = Propose.create(:obra => "PUENTE_MACAL")
 ip1 = ItemsPropose.create(:item => item1, :propose => p1)
+ip2 = ItemsPropose.create(:item => item2, :propose => p1)
