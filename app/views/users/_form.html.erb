@@ -10,24 +10,35 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name %>
+<div class="row">
+  <div class="span6 offset3">
+    <div class="field">
+      <%= f.label :first_name, "Nombre" %><br />
+      <%= f.text_field :first_name %>
+    </div>
+    <div class="field">
+      <%= f.label :last_name, "Apellido" %><br />
+      <%= f.text_field :last_name %>
+    </div>
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.text_field :email %>
+    </div>
+    <div class="field">
+      <%= f.label :password, "Contraseña" %><br />
+      <%= f.text_field :password %>
+    </div>
+    <div class="field">
+      <%= f.label :password_confirmation, "Confirme contraseña" %><br />
+      <%= f.text_field :password_confirmation %>
+    </div>
+    <div class="field">
+      <%= f.label :isadmin, "Administrador" %><br />
+      <%= f.check_box :isadmin %>
+    </div>  
+    <div class="actions">
+      <%= f.submit "Guardar"%>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :isadmin %><br />
-    <%= f.check_box :isadmin %>
-  </div>
-  <div class="actions">
-    <%= f.submit "Guardar"%>
-  </div>
+</div>
 <% end %>
