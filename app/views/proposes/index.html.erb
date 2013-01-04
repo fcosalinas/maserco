@@ -1,23 +1,19 @@
-<h1>Listing proposes</h1>
+<% provide(:title, 'Propuestas') %>
+<h1>Lista de Propuestas</h1>
 
-<table>
+<%= will_paginate %>
+
+<table class="proposes">
   <tr>
     <th>Obra</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Opciones</th>
   </tr>
 
-<% @proposes.each do |propose| %>
-  <tr>
-    <td><%= propose.obra %></td>
-    <td><%= link_to 'Show', propose %></td>
-    <td><%= link_to 'Edit', edit_propose_path(propose) %></td>
-    <td><%= link_to 'Destroy', propose, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+  <%= render @proposes %>
 </table>
 
 <br />
 
-<%= link_to 'New Propose', new_propose_path %>
+<%= will_paginate %>
+
+<%= link_to 'Nueva propuesta', new_propose_path %>

@@ -1,6 +1,33 @@
-<h1>Editando el usuario</h1>
+<% provide(:title, "Editando usuario") %> 
+<h1>Editando el usuario <%= @user.full_name %></h1>
 
-<%= render 'form' %>
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@user) do |f| %>
+      <%= render 'shared/error_messages' %>
+
+      <%= f.label :first_name, "Nombre" %>
+      <%= f.text_field :first_name %>
+
+      <%= f.label :last_name, "Apellido" %>
+      <%= f.text_field :last_name %>
+
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+
+      <%= f.label :password, "Contraseña" %>
+      <%= f.password_field :password %>
+
+      <%= f.label :password_confirmation, "Confirme contraseña" %>
+      <%= f.password_field :password_confirmation %>
+
+      <%= f.submit "Guardar Cambios", class: "btn btn-large btn-primary" %>
+    <% end %>
+
+    <%= gravatar_for @user %>
+    <a href="http://gravatar.com/emails">Cambiar Avatar</a>
+  </div>
+</div>
 
 <%= link_to 'Ver Usuario', @user %> |
 <%= link_to 'Atrás', users_path %>

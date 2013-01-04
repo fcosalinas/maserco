@@ -11,7 +11,3 @@
  *= require_self
  *= require_tree .
  */
- table, th, td
-{
-border: 1px solid black;
-}

@@ -44,7 +44,7 @@ class ProposesController < ApplicationController
 
     respond_to do |format|
       if @propose.save
-        format.html { redirect_to @propose, notice: 'Propose was successfully created.' }
+        format.html { redirect_to @propose, notice: 'Propuesta creada' }
         format.json { render json: @propose, status: :created, location: @propose }
       else
         format.html { render action: "new" }
@@ -60,7 +60,7 @@ class ProposesController < ApplicationController
 
     respond_to do |format|
       if @propose.update_attributes(params[:propose])
-        format.html { redirect_to @propose, notice: 'Propose was successfully updated.' }
+        format.html { redirect_to @propose, notice: 'Propuesta actualizada' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

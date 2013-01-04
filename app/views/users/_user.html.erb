@@ -1,0 +1,14 @@
+<tr>
+  <td><%= gravatar_for user %></td>
+  <td><%= user.first_name %></td>
+  <td><%= user.last_name %></td>
+  <td><%= user.email %></td>
+  <td><%= user.isadmin %></td>
+  <td>
+    <%= link_to 'Ver', user %><br />
+    <%= link_to 'Editar', edit_user_path(user) %><br />
+    <% if current_user.isadmin? && !current_user?(user) %>
+    <%= link_to "Eliminar", user, method: :delete, data: { confirm: "¿Está seguro?" } %>
+    <% end %>
+  </td>
+</tr>

@@ -1,0 +1,9 @@
+<tr>
+	<td><%= item.description %></td>
+	<td><%= item.code %></td>
+	<td>
+	  <%= link_to 'Ver', item %><br />
+	  <%= link_to 'Editar', edit_item_path(item) %><br />
+	  <%= link_to 'Eliminar', item, method: :delete, data: { confirm: '¿Está seguro?' } %>
+	</td>
+</tr>

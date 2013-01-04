@@ -1,25 +1,20 @@
+<% provide(:title, 'Items') %>
 <h1>Lista de Items</h1>
 
-<table>
+<%= will_paginate %>
+
+<table class="items">
   <tr>
     <th>Descripcion</th>
     <th>Código</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Opciones</th>
   </tr>
 
-<% @items.each do |item| %>
-  <tr>
-    <td><%= item.description %></td>
-    <td><%= item.code %></td>
-    <td><%= link_to 'Ver', item %></td>
-    <td><%= link_to 'Editar', edit_item_path(item) %></td>
-    <td><%= link_to 'Eliminar', item, method: :delete, data: { confirm: '¿Está seguro?' } %></td>
-  </tr>
-<% end %>
+  <%= render @items %>
 </table>
 
 <br />
+
+<%= will_paginate %>
 
 <%= link_to 'Nuevo Item', new_item_path %>

@@ -1,30 +1,23 @@
 <% provide(:title, 'Usuarios') %>
 <h1>Lista de usuarios</h1>
 
-<table>
+<%= will_paginate %>
+
+<table class="users">
   <tr>
+    <th>Avatar</th>
     <th>Nombre </th>
     <th>Apellido</th>
     <th>Email</th>
     <th>Administrador</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Opciones</th>
   </tr>
 
-<% @users.each do |user| %>
-  <tr>
-    <td><%= user.first_name %></td>
-    <td><%= user.last_name %></td>
-    <td><%= user.email %></td>
-    <td><%= user.isadmin %></td>
-    <td><%= link_to 'Ver', user %></td>
-    <td><%= link_to 'Editar', edit_user_path(user) %></td>
-    <td><%= link_to 'Eliminar', user, method: :delete, data: { confirm: '¿Está seguro?' } %></td>
-  </tr>
-<% end %>
+  <%= render @users %>
 </table>
 
 <br />
+
+<%= will_paginate %>
 
 <%= link_to 'Nuevo Usuario', new_user_path %>
