@@ -1,0 +1,11 @@
+<p>Agregando Item a: </p><br />
+<h2><%= @propose.obra %></h2>
+<p>¿Qué item desea agregar?</p>
+<%= form_tag :controller => 'proposes', :action => 'add_itemspropose', :id => @propose.id do |f| %>
+  <%= select_tag :item_id, options_from_collection_for_select(Item.all, :id, :description), :prompt => 'Escoja un item' %>
+  <%= select_tag :unit_id, options_from_collection_for_select(Unit.all, :id, :description), :prompt => 'Escoja una unidad' %>
+  <%= number_field_tag :quantity, nil, :placeholder => 'Cantidad' %>
+  <%= number_field_tag :pu, nil, :placeholder => 'P.U.' %>
+  <%= submit_tag 'Agregar item' %>  
+<% end %>
+

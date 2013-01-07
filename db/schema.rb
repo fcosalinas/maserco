@@ -11,7 +11,41 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130103200957) do
+ActiveRecord::Schema.define(:version => 20130107183943) do
+
+  create_table "itemblocks", :force => true do |t|
+    t.float    "quantity"
+    t.float    "cdi"
+    t.float    "cdo"
+    t.integer  "propose_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "itemblocks_items", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "itemblocks_labors", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "itemblocks_machines", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "itemblocks_materials", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "itemblocks_others", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "items", :force => true do |t|
     t.string   "description"
@@ -20,14 +54,56 @@ ActiveRecord::Schema.define(:version => 20130103200957) do
     t.datetime "updated_at",  :null => false
   end
 
-  create_table "items_proposes", :force => true do |t|
-    t.integer  "item_id",    :null => false
-    t.integer  "propose_id", :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+# Could not dump table "items_proposes" because of following StandardError
+#   Unknown type 'unit' for column 'unit'
+
+  create_table "labors", :force => true do |t|
+    t.integer  "code"
+    t.string   "role"
+    t.integer  "performance"
+    t.integer  "dailylaws"
+    t.integer  "unitarycost"
+    t.float    "totaldh"
+    t.float    "realcost"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
-  add_index "items_proposes", ["item_id", "propose_id"], :name => "index_items_proposes_on_item_id_and_propose_id"
+  create_table "machines", :force => true do |t|
+    t.integer  "code"
+    t.string   "location"
+    t.string   "description"
+    t.integer  "unit"
+    t.float    "performance"
+    t.integer  "unitarycost"
+    t.float    "quantperunit"
+    t.float    "realcost"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "materials", :force => true do |t|
+    t.integer  "code"
+    t.string   "description"
+    t.integer  "unit"
+    t.float    "loss"
+    t.integer  "adqvalue"
+    t.integer  "transport"
+    t.integer  "unitarycost"
+    t.float    "sitevalue"
+    t.float    "realcost"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "others", :force => true do |t|
+    t.string   "description"
+    t.float    "quantity"
+    t.float    "unitarycost"
+    t.float    "cost"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "proposes", :force => true do |t|
     t.string   "obra"
@@ -35,13 +111,21 @@ ActiveRecord::Schema.define(:version => 20130103200957) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "units", :force => true do |t|
+    t.string   "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "users", :force => true do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
     t.boolean  "isadmin"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.string   "password"
+    t.string   "password_confirmation"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
     t.string   "password_digest"
     t.string   "remember_token"
   end

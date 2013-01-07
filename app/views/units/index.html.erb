@@ -1,0 +1,18 @@
+<% provide(:title, 'Unidades') %>
+<h1>Unidades</h1>
+
+<%= will_paginate %>
+
+<table class="index users">
+  <tr>
+    <th>Descripcion</th>
+    <th>Opciones</th>
+  </tr>
+<%= render @units %>
+</table>
+
+<br />
+
+<%= will_paginate %>
+
+<%= link_to 'Nueva Unidad', new_unit_path %>

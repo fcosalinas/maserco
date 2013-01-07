@@ -1,0 +1,35 @@
+<h1>Listing labors</h1>
+
+<table>
+  <tr>
+    <th>Code</th>
+    <th>Role</th>
+    <th>Performance</th>
+    <th>Dailylaws</th>
+    <th>Unitarycost</th>
+    <th>Totaldh</th>
+    <th>Realcost</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @labors.each do |labor| %>
+  <tr>
+    <td><%= labor.code %></td>
+    <td><%= labor.role %></td>
+    <td><%= labor.performance %></td>
+    <td><%= labor.dailylaws %></td>
+    <td><%= labor.unitarycost %></td>
+    <td><%= labor.totaldh %></td>
+    <td><%= labor.realcost %></td>
+    <td><%= link_to 'Show', labor %></td>
+    <td><%= link_to 'Edit', edit_labor_path(labor) %></td>
+    <td><%= link_to 'Destroy', labor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Labor', new_labor_path %>

@@ -1,0 +1,45 @@
+<%= form_for(@labor) do |f| %>
+  <% if @labor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@labor.errors.count, "error") %> prohibited this labor from being saved:</h2>
+
+      <ul>
+      <% @labor.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :code %><br />
+    <%= f.number_field :code %>
+  </div>
+  <div class="field">
+    <%= f.label :role %><br />
+    <%= f.text_field :role %>
+  </div>
+  <div class="field">
+    <%= f.label :performance %><br />
+    <%= f.number_field :performance %>
+  </div>
+  <div class="field">
+    <%= f.label :dailylaws %><br />
+    <%= f.number_field :dailylaws %>
+  </div>
+  <div class="field">
+    <%= f.label :unitarycost %><br />
+    <%= f.number_field :unitarycost %>
+  </div>
+  <div class="field">
+    <%= f.label :totaldh %><br />
+    <%= f.text_field :totaldh %>
+  </div>
+  <div class="field">
+    <%= f.label :realcost %><br />
+    <%= f.text_field :realcost %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

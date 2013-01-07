@@ -1,0 +1,8 @@
+<tr>
+	<td><%= unit.description %></td>
+	<td>
+	  <%= link_to 'Ver', unit %><br />
+	  <%= link_to 'Editar', edit_unit_path(unit) %><br />
+	  <%= link_to 'Eliminar', unit, method: :delete, data: { confirm: '¿Está seguro?' } %>
+	</td>
+</tr>

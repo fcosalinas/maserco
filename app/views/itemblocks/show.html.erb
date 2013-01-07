@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Quantity:</b>
+  <%= @itemblock.quantity %>
+</p>
+
+<p>
+  <b>Cdi:</b>
+  <%= @itemblock.cdi %>
+</p>
+
+<p>
+  <b>Cdo:</b>
+  <%= @itemblock.cdo %>
+</p>
+
+
+<%= link_to 'Edit', edit_itemblock_path(@itemblock) %> |
+<%= link_to 'Back', itemblocks_path %>

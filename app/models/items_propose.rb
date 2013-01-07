@@ -13,5 +13,7 @@ class ItemsPropose < ActiveRecord::Base
   belongs_to :item
   belongs_to :propose
   
-  attr_accessible :item, :propose
+  attr_accessible :item, :propose, :quantity, :pu, :unit
+
+  validates_uniqueness_of :propose_id, :scope => [:item_id]
 end

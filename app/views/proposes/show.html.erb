@@ -7,20 +7,28 @@
 <p>
 	<b>ITEMS:</b>
 </p>
-<table>
+<table class="index">
 	<tr>
 		<th>Código interno</th>
 		<th>Designación</th>
+		<th>Unidad</th>
+		<th>Cantidad</th>
+		<th>P.U.</th>
+		<th></th>
 	</tr>
 
 	<% @propose.items.each do |item| %>
 		<tr>
 			<td><%= item.code %></td>
 			<td><%= item.description %></td>
+			<td><%= Unit.find_by_id(ItemsPropose.find_by_item_id_and_propose_id(item.id, @propose.id).unit).description %></td>
+			<td><%= ItemsPropose.find_by_item_id_and_propose_id(item.id, @propose.id).quantity %></td>
+			<td><%= ItemsPropose.find_by_item_id_and_propose_id(item.id, @propose.id).pu %></td>
+			<td><%= button_to 'Eliminar', {:controller => 'proposes', :action => 'delete_itemspropose',:item_id => item.id, :propose_id => @propose.id} %></td>
 		</tr>
 	<% end %>
 </table>
 <br />
-
+<%= link_to "Agregar item a la propuesta", add_item_path, class: "btn btn-large btn-primary" %>
 <%= link_to 'Edit', edit_propose_path(@propose) %> |
 <%= link_to 'Back', proposes_path %>

@@ -1,0 +1,27 @@
+<h1>Listing itemblocks</h1>
+
+<table>
+  <tr>
+    <th>Quantity</th>
+    <th>Cdi</th>
+    <th>Cdo</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @itemblocks.each do |itemblock| %>
+  <tr>
+    <td><%= itemblock.quantity %></td>
+    <td><%= itemblock.cdi %></td>
+    <td><%= itemblock.cdo %></td>
+    <td><%= link_to 'Show', itemblock %></td>
+    <td><%= link_to 'Edit', edit_itemblock_path(itemblock) %></td>
+    <td><%= link_to 'Destroy', itemblock, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Itemblock', new_itemblock_path %>

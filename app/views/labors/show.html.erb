@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Code:</b>
+  <%= @labor.code %>
+</p>
+
+<p>
+  <b>Role:</b>
+  <%= @labor.role %>
+</p>
+
+<p>
+  <b>Performance:</b>
+  <%= @labor.performance %>
+</p>
+
+<p>
+  <b>Dailylaws:</b>
+  <%= @labor.dailylaws %>
+</p>
+
+<p>
+  <b>Unitarycost:</b>
+  <%= @labor.unitarycost %>
+</p>
+
+<p>
+  <b>Totaldh:</b>
+  <%= @labor.totaldh %>
+</p>
+
+<p>
+  <b>Realcost:</b>
+  <%= @labor.realcost %>
+</p>
+
+
+<%= link_to 'Edit', edit_labor_path(@labor) %> |
+<%= link_to 'Back', labors_path %>

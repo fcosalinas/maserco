@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Code:</b>
+  <%= @machine.code %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%= @machine.location %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @machine.description %>
+</p>
+
+<p>
+  <b>Unit:</b>
+  <%= @machine.unit %>
+</p>
+
+<p>
+  <b>Performance:</b>
+  <%= @machine.performance %>
+</p>
+
+<p>
+  <b>Unitarycost:</b>
+  <%= @machine.unitarycost %>
+</p>
+
+<p>
+  <b>Quantperunit:</b>
+  <%= @machine.quantperunit %>
+</p>
+
+<p>
+  <b>Realcost:</b>
+  <%= @machine.realcost %>
+</p>
+
+
+<%= link_to 'Edit', edit_machine_path(@machine) %> |
+<%= link_to 'Back', machines_path %>

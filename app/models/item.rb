@@ -10,5 +10,8 @@
 #
 
 class Item < ActiveRecord::Base
-  attr_accessible :code, :description
+  has_many :itemblocks, :through => :itemblocks_items
+  has_many :itemblocks_items
+
+  attr_accessible :code, :description, :itemblocks
 end

@@ -1,6 +1,24 @@
 Maserco::Application.routes.draw do
 
 
+  resources :itemblocks
+
+
+  resources :others
+
+
+  resources :machines
+
+
+  resources :materials
+
+
+  resources :labors
+
+
+  resources :units
+
+
   root to: 'static_pages#home'
 
   match '/signup',  to: 'users#new'
@@ -10,6 +28,9 @@ Maserco::Application.routes.draw do
   match '/contact', to: 'static_pages#contact'
   match '/signin',  to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
+  match '/proposes/:id/add_item' => 'proposes#add_item', :as => :add_item
+  match '/proposes/:id/add_itemspropose' => 'proposes#add_itemspropose', :as => :add_itemspropose
+  match '/proposes/delete_itemspropose' => 'proposes#delete_itemspropose', :as => :delete_itemspropose
 
   resources :proposes
 

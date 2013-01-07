@@ -6,6 +6,6 @@ class CreateItemsProposes < ActiveRecord::Migration
 		t.references :propose, :null => false
       t.timestamps
     end
-  	add_index :items_proposes, [:item_id, :propose_id], :unique => false
+  	add_index :items_proposes, [:item_id, :propose_id], :unique => true
   end
 end
