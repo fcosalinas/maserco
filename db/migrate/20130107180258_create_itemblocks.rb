@@ -4,7 +4,9 @@ class CreateItemblocks < ActiveRecord::Migration
       t.float :quantity
       t.float :cdi
       t.float :cdo
-      t.integer :propose_id
+      t.references :propose, :null => false
+      t.references :item, :null => false
+      t.references :weeksheet, :null => false
 
       t.timestamps
     end

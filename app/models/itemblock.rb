@@ -1,4 +1,4 @@
-class Itemblock < ActiveRecord::Base
+  class Itemblock < ActiveRecord::Base
   has_many :labors, :through => :itemblocks_labors
   has_many :itemblocks_labors
 
@@ -12,6 +12,7 @@ class Itemblock < ActiveRecord::Base
   has_many :itemblocks_others
 
   belongs_to :item
+  belongs_to :weeksheet
 
-  attr_accessible :cdi, :cdo, :quantity, :labors, :materials, :machines, :others
+  attr_accessible :cdi, :cdo, :quantity, :labors, :materials, :machines, :others, :item_id, :propose_id, :weeksheet
 end

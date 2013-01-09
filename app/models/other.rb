@@ -1,3 +1,3 @@
 class Other < ActiveRecord::Base
-  attr_accessible :cost, :description, :quantity, :unitarycost
+  attr_accessible :description
 end

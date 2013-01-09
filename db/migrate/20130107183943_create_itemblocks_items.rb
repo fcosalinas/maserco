@@ -4,6 +4,9 @@ class CreateItemblocksItems < ActiveRecord::Migration
 
 		t.references :itemblock, :null => false
 		t.references :item, :null => false
+      t.float :quantity
+      t.float :unitarycost
+      t.float :cost
       t.timestamps
     end
   end

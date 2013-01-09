@@ -1,3 +1,4 @@
 class Machine < ActiveRecord::Base
-  attr_accessible :code, :description, :location, :performance, :quantperunit, :realcost, :unit, :unitarycost
+	has_one :unit
+  attr_accessible :code, :description, :unit_id
 end

@@ -16,4 +16,5 @@ class ItemsPropose < ActiveRecord::Base
   attr_accessible :item, :propose, :quantity, :pu, :unit
 
   validates_uniqueness_of :propose_id, :scope => [:item_id]
+  
 end

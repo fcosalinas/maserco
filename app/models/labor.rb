@@ -1,3 +1,4 @@
 class Labor < ActiveRecord::Base
-  attr_accessible :code, :dailylaws, :performance, :realcost, :role, :totaldh, :unitarycost
+	has_one :unit
+  attr_accessible :code, :role, :unit_id
 end

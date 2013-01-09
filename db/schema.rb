@@ -11,40 +11,77 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130107183943) do
+ActiveRecord::Schema.define(:version => 20130109145130) do
+
+  create_table "controls", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "itemblocks", :force => true do |t|
     t.float    "quantity"
     t.float    "cdi"
     t.float    "cdo"
-    t.integer  "propose_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "propose_id",   :null => false
+    t.integer  "item_id",      :null => false
+    t.integer  "weeksheet_id", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "itemblocks_items", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "itemblock_id", :null => false
+    t.integer  "item_id",      :null => false
+    t.float    "quantity"
+    t.float    "unitarycost"
+    t.float    "cost"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "itemblocks_labors", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "itemblock_id", :null => false
+    t.integer  "labor_id",     :null => false
+    t.integer  "performance"
+    t.integer  "dailylaws"
+    t.integer  "unitarycost"
+    t.float    "totaldh"
+    t.float    "realcost"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "itemblocks_machines", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "itemblock_id", :null => false
+    t.integer  "machine_id",   :null => false
+    t.float    "performance"
+    t.float    "costperunit"
+    t.integer  "unitarycost"
+    t.float    "quantperunit"
+    t.float    "realcost"
+    t.string   "location"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "itemblocks_materials", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "itemblock_id", :null => false
+    t.integer  "material_id",  :null => false
+    t.float    "loss"
+    t.integer  "adqvalue"
+    t.integer  "transport"
+    t.integer  "unitarycost"
+    t.float    "sitevalue"
+    t.float    "realcost"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "itemblocks_others", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "itemblock_id", :null => false
+    t.integer  "other_id",     :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "items", :force => true do |t|
@@ -60,49 +97,42 @@ ActiveRecord::Schema.define(:version => 20130107183943) do
   create_table "labors", :force => true do |t|
     t.integer  "code"
     t.string   "role"
-    t.integer  "performance"
-    t.integer  "dailylaws"
-    t.integer  "unitarycost"
-    t.float    "totaldh"
-    t.float    "realcost"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.integer  "unit_id",    :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "machines", :force => true do |t|
     t.integer  "code"
-    t.string   "location"
     t.string   "description"
-    t.integer  "unit"
-    t.float    "performance"
-    t.integer  "unitarycost"
-    t.float    "quantperunit"
-    t.float    "realcost"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.integer  "unit_id",     :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "materials", :force => true do |t|
     t.integer  "code"
     t.string   "description"
-    t.integer  "unit"
-    t.float    "loss"
-    t.integer  "adqvalue"
-    t.integer  "transport"
-    t.integer  "unitarycost"
-    t.float    "sitevalue"
-    t.float    "realcost"
+    t.integer  "unit_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
 
+  create_table "matrices", :force => true do |t|
+    t.string   "Type"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "others", :force => true do |t|
     t.string   "description"
-    t.float    "quantity"
-    t.float    "unitarycost"
-    t.float    "cost"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "programs", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "proposes", :force => true do |t|
@@ -132,5 +162,13 @@ ActiveRecord::Schema.define(:version => 20130107183943) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
+
+  create_table "weeksheets", :force => true do |t|
+    t.integer  "week"
+    t.integer  "month"
+    t.integer  "propose_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
 end

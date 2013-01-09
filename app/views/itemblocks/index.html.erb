@@ -1,23 +1,28 @@
+<% provide(:title, 'Itemblocks') %>
 <h1>Listing itemblocks</h1>
 
 <table>
   <tr>
+    <th>Item</th>
+    <th>Propuesta</th>
     <th>Quantity</th>
-    <th>Cdi</th>
-    <th>Cdo</th>
-    <th></th>
-    <th></th>
+    <th>Mes</th>
+    <th>Semana</th>
     <th></th>
   </tr>
 
 <% @itemblocks.each do |itemblock| %>
   <tr>
+    <td><%= Item.find_by_id(itemblock.item_id).description %></td>
+    <td><%= Propose.find_by_id(itemblock.propose_id).obra %></td>
     <td><%= itemblock.quantity %></td>
-    <td><%= itemblock.cdi %></td>
-    <td><%= itemblock.cdo %></td>
-    <td><%= link_to 'Show', itemblock %></td>
-    <td><%= link_to 'Edit', edit_itemblock_path(itemblock) %></td>
-    <td><%= link_to 'Destroy', itemblock, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= itemblock.weeksheet.month %></td>
+    <td><%= itemblock.weeksheet.week %></td>
+    <td>
+      <%= link_to 'Show', itemblock %>
+      <%= link_to 'Edit', edit_itemblock_path(itemblock) %>
+      <%= link_to 'Destroy', itemblock, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </td>
   </tr>
 <% end %>
 </table>

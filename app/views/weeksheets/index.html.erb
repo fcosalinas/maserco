@@ -1,0 +1,27 @@
+<h1>Listing weeksheets</h1>
+
+<table>
+  <tr>
+    <th>Propuesta</th>
+    <th>Month</th>
+    <th>Semana</th>
+    <th></th>
+  </tr>
+
+<% @weeksheets.each do |weeksheet| %>
+  <tr>
+    <td><%= weeksheet.propose.obra %></td>
+    <td><%= weeksheet.month %></td>
+    <td><%= weeksheet.week %></td>
+    <td>
+      <%= link_to 'Show', weeksheet %>
+      <%= link_to 'Edit', edit_weeksheet_path(weeksheet) %>
+      <%= link_to 'Destroy', weeksheet, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Weeksheet', new_weeksheet_path %>

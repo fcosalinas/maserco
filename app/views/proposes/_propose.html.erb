@@ -1,7 +1,8 @@
 <tr>
 	<td><%= propose.obra %></td>
 	<td>
-	  <%= link_to 'Ver', propose %><br />
+	  <%= link_to 'Ver contenido', propose %><br />
+	  <%= link_to 'Ver planillas', show_weeksheets_path(propose.id) %><br />
 	  <%= link_to 'Editar', edit_propose_path(propose) %><br />
 	  <%= link_to 'Eliminar', propose, method: :delete, data: { confirm: '¿Está seguro?' } %>
 	</td>

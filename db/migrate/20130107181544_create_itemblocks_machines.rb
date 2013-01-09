@@ -4,6 +4,12 @@ class CreateItemblocksMachines < ActiveRecord::Migration
 
 		t.references :itemblock, :null => false
 		t.references :machine, :null => false
+      t.float :performance
+      t.float :costperunit
+      t.integer :unitarycost
+      t.float :quantperunit
+      t.float :realcost
+      t.string :location
       t.timestamps
     end
   end

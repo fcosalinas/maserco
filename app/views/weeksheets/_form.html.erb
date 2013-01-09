@@ -1,0 +1,25 @@
+<%= form_for(@weeksheet) do |f| %>
+  <% if @weeksheet.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@weeksheet.errors.count, "error") %> prohibited this weeksheet from being saved:</h2>
+
+      <ul>
+      <% @weeksheet.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :month, 'Mes' %><br />
+    <%= f.number_field :month %>
+  </div>
+  <div class="field">
+    <%= f.label :week, 'Semana' %><br />
+    <%= f.number_field :week %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

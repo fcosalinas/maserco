@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<table class="index worksheets">
+	<tr>
+  		<th>Obra</th>
+  		<th>Mes</th>
+  		<th>Semana</th>  		
+	</tr>
+	<tr>
+		<td><%= @propose.obra %></td>
+		<td><%= @weeksheet.month %></td>
+		<td><%= @weeksheet.week %></td>
+	</tr>
+</table>
+
+<table>
+  <tr>
+    <th>Item</th>
+    <th>Propuesta</th>
+    <th>Quantity</th>
+    <th></th>
+  </tr>
+
+<% @weeksheet.itemblocks.each do |itemblock| %>
+	<% @itemblock = itemblock %>
+  <tr>
+    <td><%= Item.find_by_id(itemblock.item_id).description %></td>
+    <td><%= Propose.find_by_id(itemblock.propose_id).obra %></td>
+    <td><%= render '/itemblocks/form' %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to 'Edit', edit_weeksheet_path(@weeksheet) %> |
+<%= link_to 'Back', weeksheets_path %>

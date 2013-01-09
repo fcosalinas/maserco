@@ -14,6 +14,7 @@
 		<th>Unidad</th>
 		<th>Cantidad</th>
 		<th>P.U.</th>
+		<th>Total</th>
 		<th></th>
 	</tr>
 
@@ -22,8 +23,9 @@
 			<td><%= item.code %></td>
 			<td><%= item.description %></td>
 			<td><%= Unit.find_by_id(ItemsPropose.find_by_item_id_and_propose_id(item.id, @propose.id).unit).description %></td>
-			<td><%= ItemsPropose.find_by_item_id_and_propose_id(item.id, @propose.id).quantity %></td>
-			<td><%= ItemsPropose.find_by_item_id_and_propose_id(item.id, @propose.id).pu %></td>
+			<td><%= @cant = ItemsPropose.find_by_item_id_and_propose_id(item.id, @propose.id).quantity %></td>
+			<td><%= @pu = ItemsPropose.find_by_item_id_and_propose_id(item.id, @propose.id).pu %></td>
+			<td><%= number_to_currency(@cant * @pu, :separator => ".", :precision => 0) %></td>
 			<td><%= button_to 'Eliminar', {:controller => 'proposes', :action => 'delete_itemspropose',:item_id => item.id, :propose_id => @propose.id} %></td>
 		</tr>
 	<% end %>

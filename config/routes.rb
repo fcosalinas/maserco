@@ -1,5 +1,42 @@
 Maserco::Application.routes.draw do
 
+  root to: 'static_pages#home'
+
+  match '/signup',  to: 'users#new'
+  match '/home', to: 'static_pages#home'
+  match '/help',    to: 'static_pages#help'
+  match '/about',   to: 'static_pages#about'
+  match '/contact', to: 'static_pages#contact'
+  match '/signin',  to: 'sessions#new'
+  match '/signout', to: 'sessions#destroy', via: :delete
+  match '/proposes/:id/add_item' => 'proposes#add_item', :as => :add_item
+  match '/proposes/:id/show_weeksheets' => 'proposes#show_weeksheets', :as => :show_weeksheets
+  match '/proposes/:id/add_itemspropose' => 'proposes#add_itemspropose', :as => :add_itemspropose
+  match '/proposes/delete_itemspropose' => 'proposes#delete_itemspropose', :as => :delete_itemspropose
+
+
+  resources :weeksheets
+
+  resources :proposes
+
+
+  resources :items
+
+
+  resources :users
+
+
+  resources :sessions, only: [:new, :create, :destroy]
+
+
+  resources :controls
+
+
+  resources :programs
+
+
+  resources :matrices
+
 
   resources :itemblocks
 
@@ -17,30 +54,6 @@ Maserco::Application.routes.draw do
 
 
   resources :units
-
-
-  root to: 'static_pages#home'
-
-  match '/signup',  to: 'users#new'
-  match '/home', to: 'static_pages#home'
-  match '/help',    to: 'static_pages#help'
-  match '/about',   to: 'static_pages#about'
-  match '/contact', to: 'static_pages#contact'
-  match '/signin',  to: 'sessions#new'
-  match '/signout', to: 'sessions#destroy', via: :delete
-  match '/proposes/:id/add_item' => 'proposes#add_item', :as => :add_item
-  match '/proposes/:id/add_itemspropose' => 'proposes#add_itemspropose', :as => :add_itemspropose
-  match '/proposes/delete_itemspropose' => 'proposes#delete_itemspropose', :as => :delete_itemspropose
-
-  resources :proposes
-
-
-  resources :items
-
-
-  resources :users
-
-  resources :sessions, only: [:new, :create, :destroy]
 
 
   # The priority is based upon order of creation:

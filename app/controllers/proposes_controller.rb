@@ -88,7 +88,7 @@ class ProposesController < ApplicationController
   def add_itemspropose
     @propose = Propose.find(params[:id])
     @item = Item.find(params[:item_id])
-    @ip = ItemsPropose.create(:item => @item, :propose => @propose, :quantity => params[:quantity], :pu => params[:pu], :unit => Unit.find_by_id(params[:unit_id]))
+    @ip = ItemsPropose.new(:item => @item, :propose => @propose, :quantity => params[:quantity], :pu => params[:pu], :unit => Unit.find_by_id(params[:unit_id]))
     respond_to do |format|
        if @ip.save
         format.html { redirect_to @propose, notice: 'Item agregado' }
@@ -113,4 +113,11 @@ class ProposesController < ApplicationController
       end
     end
   end
+
+  def show_weeksheets
+    @propose = Propose.find_by_id(params[:id])
+    @weeksheets = Weeksheet.find_all_by_propose_id(params[:id])
+  end
+  
+  
 end

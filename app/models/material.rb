@@ -1,3 +1,4 @@
 class Material < ActiveRecord::Base
-  attr_accessible :adqvalue, :code, :description, :loss, :realcost, :sitevalue, :transport, :unit, :unitarycost
+	has_one :unit
+  attr_accessible :code, :description, :unit_id
 end

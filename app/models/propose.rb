@@ -11,6 +11,7 @@
 class Propose < ActiveRecord::Base
   has_many :items, :through => :items_proposes
   has_many :items_proposes
+  has_many :weeeksheets
 
-  attr_accessible :items, :obra
+  attr_accessible :items, :obra, :weeksheets
 end
