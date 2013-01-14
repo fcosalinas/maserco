@@ -13,12 +13,12 @@
 	</tr>
 </table>
 
-<table>
+<table class="index itemblocks">
   <tr>
     <th>Item</th>
     <th>Propuesta</th>
     <th>Quantity</th>
-    <th></th>
+    <th>Opciones</th>
   </tr>
 
 <% @weeksheet.itemblocks.each do |itemblock| %>
@@ -26,7 +26,8 @@
   <tr>
     <td><%= Item.find_by_id(itemblock.item_id).description %></td>
     <td><%= Propose.find_by_id(itemblock.propose_id).obra %></td>
-    <td><%= render '/itemblocks/form' %></td>
+    <td><%= render 'itemblockform' %></td>
+    <td><%= link_to 'Edit', edit_weeksheet_path(itemblock) %></td>
   </tr>
 <% end %>
 </table>

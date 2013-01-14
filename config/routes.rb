@@ -13,6 +13,7 @@ Maserco::Application.routes.draw do
   match '/proposes/:id/show_weeksheets' => 'proposes#show_weeksheets', :as => :show_weeksheets
   match '/proposes/:id/add_itemspropose' => 'proposes#add_itemspropose', :as => :add_itemspropose
   match '/proposes/delete_itemspropose' => 'proposes#delete_itemspropose', :as => :delete_itemspropose
+  match '/itemblocks/update' => 'itemblocks#update', :as => :itemblocks_update
 
 
   resources :weeksheets

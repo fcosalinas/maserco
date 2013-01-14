@@ -29,8 +29,18 @@
 			<td><%= button_to 'Eliminar', {:controller => 'proposes', :action => 'delete_itemspropose',:item_id => item.id, :propose_id => @propose.id} %></td>
 		</tr>
 	<% end %>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td><b>Total</b></td>
+		<td><%= number_to_currency(ItemsPropose.find_all_by_propose_id(@propose.id).sum{ |i| i.quantity * i.pu }, :separator => ".", :precision => 0) %></td>
+		<td></td>
+	</tr>
 </table>
-<br />
+
+		<br />
 <%= link_to "Agregar item a la propuesta", add_item_path, class: "btn btn-large btn-primary" %>
 <%= link_to 'Edit', edit_propose_path(@propose) %> |
 <%= link_to 'Back', proposes_path %>

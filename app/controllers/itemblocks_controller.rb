@@ -1,4 +1,4 @@
-class ItemblocksController < ApplicationController
+  class ItemblocksController < ApplicationController
   # GET /itemblocks
   # GET /itemblocks.json
   def index
@@ -60,7 +60,7 @@ class ItemblocksController < ApplicationController
 
     respond_to do |format|
       if @itemblock.update_attributes(params[:itemblock])
-        format.html { redirect_to @itemblock, notice: 'Itemblock was successfully updated.' }
+        format.html { redirect_to @itemblock.weeksheet, notice: 'Itemblock was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
